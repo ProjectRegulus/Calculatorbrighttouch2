@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="description" content="Get an instant cleaning quote from Bright Touch Cleaning in Minneapolis and St. Paul.">
+<meta name="robots" content="noindex">
+<title>Bright Touch Instant Quote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap">
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<style>
+/* Layout: formulario por pasos a la izquierda, cotización fija a la derecha; en celular, la cotización va al final con una barra de total abajo. Identidad: celeste, blanco y azul marino de Bright Touch. */
+:root{
+  color-scheme:light;
+  --bg:#F2F8FD; --surface:#FFFFFF; --sky:#3FA9E8; --sky-soft:#E3F2FC; --navy:#0D2B52; --ink:#14243A;
+  --muted:#5A6B82; --line:#D5E4F1; --gold:#C9A24A; --ok:#178F5E; --warn:#B4610E;
+  --f-display:"Urbanist","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"DM Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.45;margin:0;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:0 96px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto}
+
+/* Encabezado */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:16px}
+.brand{display:flex;flex-direction:column;line-height:1.05}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:21px;color:var(--navy);letter-spacing:-.01em}
+.brand span{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sky)}
+.bar-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.phone{font-weight:700;color:var(--navy);text-decoration:none;font-variant-numeric:tabular-nums}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:3px}
+.lang button{border:0;background:transparent;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:700;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--navy);color:#fff}
+
+.hero{background:var(--navy);color:#fff;border-radius:22px;padding:26px 24px;display:grid;gap:8px;margin-bottom:18px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(63,169,232,.55),rgba(63,169,232,0) 70%)}
+.hero h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(28px,5vw,42px);line-height:1.02;letter-spacing:-.015em;text-wrap:balance;position:relative}
+.hero p{margin:0;color:#C9E3F6;max-width:56ch;position:relative}
+.trust{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:#fff;position:relative}
+.trust span::before{content:"✓ ";color:var(--sky)}
+
+/* Formulario */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.form{display:grid;gap:14px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:14px;min-width:0}
+.step h2{margin:0;font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--navy);display:flex;align-items:center;gap:10px}
+.step h2 i{font-style:normal;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sky-soft);color:var(--navy);font-size:13px;font-weight:800;font-family:var(--f-body)}
+.hint{margin:0;font-size:13px;color:var(--muted)}
+
+.services{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:grid;gap:2px;height:100%;border:1.5px solid var(--line);border-radius:14px;padding:11px 12px;background:var(--surface)}
+.opt b{font-size:14px;font-weight:700;color:var(--navy);line-height:1.2}
+.opt small{font-size:12.5px;color:var(--muted)}
+.opt input:checked + span{border-color:var(--sky);background:var(--sky-soft);box-shadow:inset 0 0 0 1px var(--sky)}
+.opt input:focus-visible + span{outline:3px solid var(--sky);outline-offset:2px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills .opt span{border-radius:999px;padding:8px 14px;display:inline-flex;align-items:center;gap:6px}
+.pills .opt b{font-size:14px}
+.tag{font-size:11.5px;font-weight:700;color:var(--ok);background:#E1F4EA;border-radius:999px;padding:1px 7px}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field{display:grid;gap:6px;min-width:0}
+.field > label,.field > .lbl{font-size:13px;font-weight:600;color:var(--navy)}
+.field input[type=number],.field input[type=text],.field select{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);font-variant-numeric:tabular-nums}
+.stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface)}
+.stepper button{width:44px;height:42px;border:0;background:var(--sky-soft);color:var(--navy);font-size:20px;font-weight:700;flex:none}
+.stepper output{flex:1;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.check{display:flex;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--navy);flex:none}
+.check span{flex:1;font-size:14px}
+.check em{font-style:normal;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.check:has(input:checked){border-color:var(--sky);background:var(--sky-soft)}
+.sub{margin:4px 0 0;font-family:var(--f-display);font-size:16px;color:var(--navy)}
+.note{font-size:13px;border-radius:12px;padding:10px 12px;background:#FFF5E6;color:#7A4A0E}
+
+/* Cotización */
+.quote{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 14px);background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 40px rgba(13,43,82,.10)}
+.q-head{background:var(--navy);color:#fff;padding:16px 18px;display:grid;gap:2px}
+.q-head small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9FD3F5}
+.q-total{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1.05;font-variant-numeric:tabular-nums}
+.q-sub{font-size:13px;color:#C9E3F6}
+.q-body{padding:16px 18px;display:grid;gap:14px}
+.lines{display:grid;gap:7px;font-size:14px}
+.line{display:flex;justify-content:space-between;gap:12px}
+.line span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.line.minus span:last-child{color:var(--ok)}
+.panels{display:grid;gap:14px}
+.panels:empty{display:none}
+.line.head{font-weight:700;color:var(--navy);margin-top:6px;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.line.strong{font-weight:700;color:var(--navy);border-top:1px solid var(--line);padding-top:8px}
+.line.muted{color:var(--muted);font-size:13px}
+.recur{background:var(--sky-soft);border-radius:12px;padding:10px 12px;display:grid;gap:4px;font-size:14px}
+.recur b{color:var(--navy)}
+.deposit{display:flex;justify-content:space-between;align-items:center;border:1.5px dashed var(--sky);border-radius:12px;padding:10px 12px;font-weight:700;color:var(--navy)}
+.cta{display:grid;gap:8px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:14px;padding:14px 16px;font-weight:700;font-size:15px;text-decoration:none;text-align:center}
+.btn.primary{background:var(--sky);color:#06213F}
+.btn.primary:hover{background:#2E97D6}
+.btn.ghost{background:var(--surface);border:1.5px solid var(--line);color:var(--navy)}
+.contact{font-size:13px;color:var(--muted);text-align:center;display:grid;gap:2px}
+.contact b{color:var(--navy);font-variant-numeric:tabular-nums;user-select:all}
+.policy{font-size:12px;color:var(--muted);margin:0;border-top:1px solid var(--line);padding-top:12px}
+.copied{font-size:13px;color:var(--ok);text-align:center;min-height:1em;margin:0}
+
+.mini{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--navy);color:#fff;display:none;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px))}
+.mini b{font-family:var(--f-display);font-size:24px;font-variant-numeric:tabular-nums}
+.mini small{display:block;font-size:11px;color:#9FD3F5;letter-spacing:.1em;text-transform:uppercase}
+.mini a{background:var(--sky);color:#06213F;border-radius:12px;padding:10px 14px;font-weight:700;text-decoration:none}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .quote{position:static}
+  .mini{display:flex}
+}
+@media (max-width:480px){
+  .grid2{grid-template-columns:1fr 1fr;gap:10px}
+  .step{padding:15px}
+  .hero{padding:22px 18px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="bar">
+    <div class="brand"><b>Bright Touch</b><span>Cleaning Services</span></div>
+    <div class="bar-right">
+      <span class="phone" id="topPhone">612-600-6369</span>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" id="btnEn" aria-pressed="true">EN</button>
+        <button type="button" id="btnEs" aria-pressed="false">ES</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 data-t="heroTitle">Get Your Instant Quote &amp; Book Now</h1>
+    <p data-t="heroSub">Answer a few quick questions and see your price in seconds. No calls, no waiting.</p>
+    <div class="trust"><span data-t="trust1">Insured local team</span><span data-t="trust2">Checklist on every visit</span><span data-t="trust3">5-star Google reviews</span></div>
+  </section>
+
+  <div class="layout">
+    <form class="form" id="form" novalidate>
+      <section class="step">
+        <h2><i>1</i><span data-t="s1">Choose your cleaning</span></h2>
+        <div class="services" id="services"></div>
+      </section>
+
+      <div class="panels" id="primaryPanels">
+      <section class="step" id="customBox" hidden>
+        <h2><i>2</i><span data-t="customTitle">Let's build your custom quote</span></h2>
+        <p class="hint" data-t="customText">This service is priced after a quick look at your space. Send us a text or call and we'll get you a price today.</p>
+      </section>
+
+      <section class="step" id="homeStep">
+        <h2><i>2</i><span data-t="s2">Tell us about your home</span></h2>
+        <div class="grid2">
+          <div class="field"><label for="sqft" data-t="sqft">Square footage</label><input type="number" id="sqft" inputmode="numeric" min="200" max="10000" step="50" value="1500"></div>
+          <div class="field"><label for="basement" data-t="basement">Basement</label><select id="basement"></select></div>
+          <div class="field"><span class="lbl" data-t="bedrooms">Bedrooms</span><div class="stepper" data-key="bedrooms" data-min="0" data-max="8"></div></div>
+          <div class="field"><span class="lbl" data-t="large">Large / master bedrooms</span><div class="stepper" data-key="large" data-min="0" data-max="8"></div></div>
+          <div class="field"><span class="lbl" data-t="fullBaths">Full bathrooms</span><div class="stepper" data-key="fullBaths" data-min="1" data-max="8"></div></div>
+          <div class="field"><span class="lbl" data-t="halfBaths">Half bathrooms</span><div class="stepper" data-key="halfBaths" data-min="0" data-max="6"></div></div>
+          <div class="field"><span class="lbl" data-t="extraRooms">Office / den / extra room</span><div class="stepper" data-key="extraRooms" data-min="0" data-max="6"></div></div>
+          <div class="field"><label for="pets" data-t="pets">Pets</label><select id="pets"></select></div>
+        </div>
+        <p class="hint" data-t="studioHint">0 bedrooms = studio.</p>
+      </section>
+
+      <section class="step" id="assistStep" hidden>
+        <h2><i>2</i><span data-t="asTitle">Personal Home Assistant</span></h2>
+        <p class="hint" data-t="asIntro">Light cleaning, home organization and household help, billed by the hour. This is not a deep cleaning or full-house cleaning.</p>
+        <div class="grid2">
+          <div class="field"><span class="lbl" data-t="asHoursL">Hours (minimum 5)</span><div class="stepper" data-key="h.hours" data-min="5" data-max="8"></div></div>
+          <div class="field"><span class="lbl" data-t="asPeopleL">Assistants</span><div class="stepper" data-key="h.people" data-min="1" data-max="4"></div></div>
+        </div>
+        <span class="lbl" style="font-size:13px;font-weight:600;color:var(--navy)" data-t="asTasksL">What do you need help with?</span>
+        <div class="checks" id="asTasks"></div>
+        <label class="check"><input type="checkbox" id="asSupplies"><span data-t="asSuppliesL">Bring cleaning supplies and equipment</span><em>+$50</em></label>
+        <p class="note" data-t="asNote">You are booking the assistant's time, not a set amount of work. Please share your task list and priorities before the visit. Deep cleaning, ovens, carpets, heavy furniture, childcare and personal care are not included. Cancel or reschedule with at least 24 hours' notice.</p>
+        <label class="check" id="asAgreeBox"><input type="checkbox" id="asAgree"><span data-t="asAgreeL">I understand this is a time-based household assistance service, not a Deep Cleaning or full-house cleaning.</span></label>
+      </section>
+
+      <section class="step" id="binsStep" hidden>
+        <h2><i>2</i><span data-t="bTitle">Trash bin cleaning &amp; deodorizing</span></h2>
+        <div class="grid2">
+          <div class="field"><label for="bMode" data-t="bModeL">Type of service</label><select id="bMode"></select></div>
+          <div class="field" id="bFreqWrap"><label for="bFreq" data-t="bFreqL">How often?</label><select id="bFreq"></select></div>
+          <div class="field"><span class="lbl" data-t="bCountL">Number of bins</span><div class="stepper" data-key="b.count" data-min="1" data-max="10"></div></div>
+          <div class="field"><label for="bDay" data-t="bDayL">Trash collection day</label><select id="bDay"></select></div>
+        </div>
+        <div class="checks" id="bChecks"></div>
+        <p class="note" data-t="bNote">Bins must be empty and accessible. Includes washing inside and out, lid, edges and handles, rinse and deodorizing. Does not include removing trash or hazardous waste. Service depends on weather.</p>
+      </section>
+
+      <section class="step" id="pressureStep" hidden>
+        <h2><i>2</i><span data-t="pwTitle">What should we wash?</span></h2>
+        <div class="field"><label for="pwHouse" data-t="pwHouseL">House exterior (soft wash, safe for siding)</label><select id="pwHouse"></select></div>
+        <div class="checks" id="pwChecks"></div>
+        <div class="grid2">
+          <div class="field"><label for="pwPatio" data-t="pwPatioL">Patio</label><select id="pwPatio"></select></div>
+          <div class="field"><label for="pwDirt" data-t="pwDirtL">How dirty is it?</label><select id="pwDirt"></select></div>
+        </div>
+        <p class="note" data-t="pwNote">Starting prices. Final price is confirmed after we review the surface, size and access. Homes up to 2 stories; no roof cleaning. Siding is cleaned with low-pressure soft wash.</p>
+      </section>
+
+      <section class="step" id="windowsStep" hidden>
+        <h2><i>2</i><span data-t="wTitle">Tell us about your windows</span></h2>
+        <div class="field"><label for="wType" data-t="wTypeL">What do you need cleaned?</label><select id="wType"></select></div>
+        <div class="grid2">
+          <div class="field"><label for="wP1" data-t="wP1L">Glass panes – 1st floor</label><input type="number" id="wP1" data-win="p1" min="0" max="200" inputmode="numeric"></div>
+          <div class="field"><label for="wP2" data-t="wP2L">Glass panes – 2nd floor</label><input type="number" id="wP2" data-win="p2" min="0" max="200" inputmode="numeric"></div>
+          <div class="field"><label for="wScreens" data-t="wScreensL">Window screens ($3 each)</label><input type="number" id="wScreens" data-win="screens" min="0" max="200" inputmode="numeric"></div>
+          <div class="field"><label for="wTracks" data-t="wTracksL">Tracks, detailed ($5 each)</label><input type="number" id="wTracks" data-win="tracks" min="0" max="200" inputmode="numeric"></div>
+          <div class="field"><label for="wSliding" data-t="wSlidingL">Sliding glass doors ($20 each)</label><input type="number" id="wSliding" data-win="sliding" min="0" max="20" inputmode="numeric"></div>
+          <div class="field"><span class="lbl" data-t="wAddonT">Booking type</span><label class="check"><input type="checkbox" id="wAddon"><span data-t="wAddonL">Add to my house cleaning</span></label></div>
+        </div>
+        <p class="hint" data-t="wHint">How to count: a window with two separate pieces of glass = 2 panes. Both sides of the same glass count as 1 pane.</p>
+        <p class="note" data-t="wNote">Homes up to 2 stories only. Second-floor exterior work depends on safe access. Picture windows, French doors, hard-water stains and construction residue are quoted on site.</p>
+      </section>
+
+      <section class="step" id="airbnbStep" hidden>
+        <h2><i>2</i><span data-t="aTitle">Tell us about your rental</span></h2>
+        <div class="field"><label for="aSize" data-t="aSize">Bedrooms / bathrooms</label><select id="aSize"></select></div>
+        <h3 class="sub" data-t="aLaundryT">Off-site laundry</h3>
+        <div class="grid2">
+          <div class="field"><span class="lbl" data-t="aLoadsL">Laundry loads</span><div class="stepper" data-key="a.loads" data-min="0" data-max="12"></div></div>
+          <div class="field"><span class="lbl" data-t="aSmall">Small comforters</span><div class="stepper" data-key="a.small" data-min="0" data-max="6"></div></div>
+          <div class="field"><span class="lbl" data-t="aQueen">Queen comforters</span><div class="stepper" data-key="a.queen" data-min="0" data-max="6"></div></div>
+          <div class="field"><span class="lbl" data-t="aKing">King comforters</span><div class="stepper" data-key="a.king" data-min="0" data-max="6"></div></div>
+        </div>
+        <p class="hint" data-t="aLaundryNote">Laundry is washed off-site and returned the next day. Please keep a second clean set of linens and towels for same-day turnovers.</p>
+        <h3 class="sub" data-t="aExtrasT">Add-ons</h3>
+        <div class="checks" id="aChecks"></div>
+      </section>
+
+      <section class="step" id="carpetStep" hidden>
+        <h2><i>2</i><span data-t="cTitle">Which areas need carpet cleaning?</span></h2>
+        <div class="grid2">
+          <div class="field"><span class="lbl" data-t="cRooms">Bedrooms (up to 200 sq ft each)</span><div class="stepper" data-key="c.rooms" data-min="0" data-max="12"></div></div>
+          <div class="field"><label for="cLiving" data-t="cLiving">Living room</label><select id="cLiving"></select></div>
+          <div class="field"><span class="lbl" data-t="cHalls">Hallways (up to 100 sq ft)</span><div class="stepper" data-key="c.halls" data-min="0" data-max="6"></div></div>
+          <div class="field"><label for="cStairs" data-t="cStairs">Stairs (up to 15 steps)</label><select id="cStairs"></select></div>
+          <div class="field"><span class="lbl" data-t="cLandings">Stair landings</span><div class="stepper" data-key="c.landings" data-min="0" data-max="4"></div></div>
+          <div class="field"><span class="lbl" data-t="cClosets">Small closets</span><div class="stepper" data-key="c.closets" data-min="0" data-max="8"></div></div>
+          <div class="field"><span class="lbl" data-t="cPet">Pet odor removal (areas)</span><div class="stepper" data-key="c.petAreas" data-min="0" data-max="10"></div></div>
+          <div class="field"><span class="lbl" data-t="cSpotsL">Spot treatment</span><label class="check"><input type="checkbox" id="cSpots"><span data-t="cSpots">Treat specific stains</span><em>+$20</em></label></div>
+        </div>
+        <p class="hint" data-t="cNote">Packages are applied automatically when they save you money. Heavy stains and odors are evaluated on site; complete removal can't be guaranteed.</p>
+      </section>
+
+      <section class="step" id="freqStep">
+        <h2><i>3</i><span data-t="s3">How often?</span></h2>
+        <div class="pills" id="freq"></div>
+        <p class="hint" id="freqHint"></p>
+      </section>
+
+      <section class="step" id="extrasStep">
+        <h2><i>4</i><span data-t="s4">Add extras</span></h2>
+        <div class="checks" id="extras"></div>
+        <div class="field"><label for="condition" data-t="condition">Current condition of the home</label><select id="condition"></select></div>
+      </section>
+
+      </div>
+
+      <section class="step" id="addonsStep">
+        <h2><i>+</i><span data-t="adTitle">Add more services to this visit</span></h2>
+        <p class="hint" data-t="adHint">Everything goes in one quote, with one travel fee and one deposit.</p>
+        <div class="checks" id="addonChecks"></div>
+      </section>
+      <div class="panels" id="addonPanels"></div>
+
+      <section class="step" id="locStep">
+        <h2><i>5</i><span data-t="s5">Where are we cleaning?</span></h2>
+        <div class="grid2">
+          <div class="field"><label for="city" data-t="city">City</label><select id="city"></select></div>
+          <div class="field"><label for="zip" data-t="zip">ZIP code</label><input type="text" id="zip" inputmode="numeric" maxlength="5" placeholder="55407" autocomplete="postal-code"></div>
+        </div>
+        <div class="field" id="taxCityWrap" hidden><label for="taxCity" data-t="taxCityL">Which city is your home legally in?</label><select id="taxCity"></select><p class="hint" data-t="taxCityHint"></p></div>
+        <div class="field"><label for="pay" data-t="pay">How will you pay?</label><select id="pay"></select></div>
+        <p class="note" id="cityNote" hidden></p>
+      </section>
+    </form>
+
+    <aside class="quote" id="quote" aria-live="polite"></aside>
+  </div>
+</div>
+<div class="mini" id="mini"><div><small data-t="miniLabel">Estimated total</small><b id="miniTotal">$0</b></div><a href="#quote" data-t="miniBtn">See my quote</a></div>
+
+<script>
+/* ============ AJUSTES (precios y datos de contacto) ============
+   Cambia aquí cualquier número; todo se recalcula solo. */
+const SETTINGS={
+  phone:"612-600-6369",
+  email:"book.brighttouch@gmail.com",
+  bookingUrl:"",                 // Pega aquí tu enlace de reservas de Jobber
+  base:{                        // Studio / 1 Bed-1 Bath
+    standard:{studio:125,one:135}, deep:{studio:200,one:215},
+    move:{studio:225,one:270},     post:{studio:225,one:290}
+  },
+  rooms:{bedroom:32,largeBedroom:40,fullBath:32,halfBath:22,extraRoom:22},
+  basement:{none:0,small:65,large:110},
+  discounts:{once:0,weekly:20,biweekly:15,monthly:5},   // %
+  extras:{oven:35,fridge:35,cabinets:55,baseboards:40,windows:[45,75],blinds:[55,90]},
+  heavyDuty:110,
+  largeHomeSqft:2000,           // desde aquí cuenta como "casa grande" para ventanas y persianas
+  pets:{none:0,one:25,multi:35},
+  travel:[0,0,20],              // hasta 20 min / más de 20 / más de 30 (solo se cobra más de 30 min)
+  taxRate:6.875,                // % si la ciudad no está en la lista (solo tasa estatal)
+  cardFee:3.8,                  // % pago con tarjeta
+  deposit:25,                   // % para reservar
+  maxSqft:5000,
+  addonServices:["carpet","windows","bins","pressure"],   // servicios que se pueden sumar a la misma visita
+  // Airbnb (Airbnb & Vacation Rental 2026) — precio por turnover según habitaciones-baños
+  airbnb:{
+    sizes:{"0-1":115,"1-1":125,"2-1":155,"2-2":175,"3-2":195,"3-3":225,"4-2":235,"4-3":265,"4-4":295,"5-3":310,"5-4":340,"6+":0},
+    laundry:{loads:[25,45,65],extraLoad:20,small:20,queen:25,king:35},
+    oven:45, fridge:45, cabinets:65, initialPct:40, mess:50, urgent:35
+  },
+  // Personal Home Assistant — por hora y por asistente
+  assistant:{hourly:70, minHours:5, maxHours:8, supplies:50},
+  // Limpieza de contenedores de basura 2026
+  bins:{
+    addon:[25,40,55,70],          // 1 a 4 contenedores como adicional a limpieza de casa
+    once:[60,75,90,105],          // 1, 2, 3, 4 contenedores, servicio independiente (1 solo = mínimo $60)
+    extraBin:15,
+    recurring:{monthly:35,quarterly:50,semiannual:65},   // por visita, hasta 2 contenedores
+    extreme:15, stuck:15, odor:10
+  },
+  // Lavado a presión y Soft Wash 2026 — precios iniciales ("starting from")
+  pressure:{
+    items:{driveway:150,sidewalk:75,deck:175,porch:85,stairs:65,garage:150,fence:125,garageExt:125},
+    patio:{none:0,small:125,medium:175,large:250},
+    house:{none:0,one:250,two:375,front:150},
+    dirt:{normal:0,moderate:15,heavy:30}, min:150
+  },
+  // Ventanas (Window Cleaning 2026) — por panel: [1ª planta, 2ª planta]; máximo 2 plantas
+  windows:{
+    rates:{interior:[4,5],exterior:[5,7],both:[8,11]},
+    screen:3, track:5, sliding:20, min:150, addonMin:75
+  },
+  // Alfombras (Carpet Cleaning 2026)
+  carpet:{
+    rooms:[85,150,210,265,320],  // 1 a 5 habitaciones (hasta 200 ft² c/u)
+    extraRoom:55, living:95, livingLarge:135, hall:40, stairs:75, landing:25, closet:20,
+    spot:20, petOdor:35,         // "desde": tratamiento de manchas / olor de mascota por área
+    min:150,                     // mínimo por visita independiente
+    packages:[
+      {rooms:2,hall:true,price:185},
+      {rooms:3,living:true,hall:true,price:295},
+      {rooms:3,living:true,stairs:true,price:365},
+      {rooms:5,living:true,hall:true,price:425}
+    ]
+  },
+  // Mínimo por pies cuadrados: hasta sqft → [Initial, Weekly, Bi-Weekly, Monthly, Deep, Move Out]
+  sqftTable:[
+    [1000,284,154,160,184,246,307],[1500,305,170,178,205,369,461],[2000,346,205,214,246,491,614],
+    [2500,407,256,267,307,614,768],[3000,469,307,320,369,737,921],[3500,530,358,374,430,860,1075],
+    [4000,591,409,427,491,983,1228],[4500,653,461,481,553,1106,1382],[5000,714,512,534,614,1228,1536]
+  ],
+  // Ciudad → [nivel de viaje desde 55407 (0 = hasta 20 min, 1 = más de 20, 2 = más de 30), sales tax combinado %]
+  // Tasas: Minnesota Revenue, Metro Counties Sales Tax Rate Guide (7/1/2026). Blaine, Chanhassen y Waconia
+  // están en dos condados: se usa la tasa de Anoka / Carver. Revísalas cada trimestre.
+  cities:{
+    "Minneapolis":[0,9.025],
+    "Richfield":[0,9.025],
+    "Edina":[0,9.025],
+    "St. Louis Park":[0,8.525],
+    "Bloomington":[0,9.025],
+    "Golden Valley":[0,9.775],
+    "St. Paul":[0,9.875],
+    "Hopkins":[0,8.525],
+    "Robbinsdale":[0,8.525],
+    "Crystal":[0,8.525],
+    "Columbia Heights":[0,8.125],
+    "Fridley":[0,8.125],
+    "West St. Paul":[0,8.625],
+    "Mendota Heights":[0,8.125],
+    "Roseville":[0,8.875],
+    "Minnetonka":[1,8.525],
+    "Eden Prairie":[1,8.525],
+    "Plymouth":[1,8.525],
+    "New Hope":[1,8.525],
+    "Brooklyn Center":[1,8.525],
+    "Brooklyn Park":[1,8.525],
+    "Maple Grove":[1,9.025],
+    "Wayzata":[1,8.525],
+    "Eagan":[1,8.125],
+    "Burnsville":[1,8.125],
+    "Apple Valley":[1,8.125],
+    "Savage":[1,8.375],
+    "Maplewood":[1,8.375],
+    "Woodbury":[1,8.875],
+    "Blaine":[1,8.125],
+    "Coon Rapids":[1,8.125],
+    "Chanhassen":[1,8.875],
+    "Shakopee":[1,8.375],
+    "Chaska":[2,8.375],
+    "Victoria":[2,8.375],
+    "Excelsior":[2,9.025],
+    "Waconia":[2,8.375],
+    "Lakeville":[2,8.125],
+    "Prior Lake":[2,8.375],
+    "Champlin":[2,8.525],
+    "Stillwater":[2,8.875]
+  },
+  /* ===== IMPUESTO POR CÓDIGO POSTAL =====
+     El sales tax se cobra según la ciudad donde está legalmente la casa, no según la ciudad del correo.
+     Tasas: Minnesota Revenue, Local Sales and Use Tax Rate Guide, 1/oct/2026 – 31/dic/2026. Revísalas cada trimestre.
+     Ojo: un ZIP puede cubrir varias ciudades. Si las tasas son distintas, el cliente elige su ciudad.
+     Para confirmar una dirección exacta: calculadora oficial de MN Revenue (Sales Tax Rate Calculator). */
+  taxRates:{
+    "Minneapolis":9.025,"Richfield":9.025,"Edina":9.025,"Bloomington":9.025,"Maple Grove":9.025,"Excelsior":9.025,
+    "Chanhassen (Hennepin County)":9.025,"Chanhassen (Carver County)":8.875,"Golden Valley":9.775,"Rogers":8.775,
+    "St. Louis Park":8.525,"Hopkins":8.525,"Minnetonka":8.525,"Eden Prairie":8.525,"Plymouth":8.525,"New Hope":8.525,
+    "Crystal":8.525,"Robbinsdale":8.525,"Brooklyn Center":8.525,"Brooklyn Park":8.525,"Champlin":8.525,"Wayzata":8.525,
+    "Orono":8.525,"Woodland":8.525,"Minnetonka Beach":8.525,"Deephaven":8.525,"Shorewood":8.525,"Tonka Bay":8.525,
+    "Minnetrista":8.525,"Greenwood":8.525,"Mound":8.525,"Spring Park":8.525,"Long Lake":8.525,"Medina":8.525,"Corcoran":8.525,"Osseo":8.525,
+    "Medicine Lake":8.525,"Independence":8.525,"Maple Plain":8.525,"St. Bonifacius":8.525,"Dayton":8.525,
+    "St. Anthony (Hennepin County)":8.525,
+    "St. Paul":9.875,"Roseville":8.875,"Maplewood":8.375,"Little Canada":8.375,"Falcon Heights":8.375,"Lauderdale":8.375,
+    "Arden Hills":8.375,"New Brighton":8.375,"Mounds View":8.375,"Shoreview":8.375,"North St. Paul":8.375,
+    "Vadnais Heights":8.375,"North Oaks":8.375,"White Bear Lake":8.375,"Blaine (Ramsey County)":8.375,
+    "Columbia Heights":8.125,"Fridley":8.125,"Hilltop":8.125,"Coon Rapids":8.125,"Blaine (Anoka County)":8.125,
+    "Spring Lake Park":8.125,"Lexington":8.125,"Circle Pines":8.125,"Lino Lakes":8.125,"Anoka":8.125,"Andover":8.125,
+    "Eagan":8.125,"Burnsville":8.125,"Apple Valley":8.125,"Lakeville":8.125,"Rosemount":8.125,"Mendota Heights":8.125,
+    "Mendota":8.125,"Lilydale":8.125,"Sunfish Lake":8.125,"Inver Grove Heights":8.125,"South St. Paul":8.125,"West St. Paul":8.625,
+    "Savage":8.375,"Shakopee":8.375,"Prior Lake":8.375,
+    "Chaska":8.375,"Victoria":8.375,"Waconia":8.375,"Carver":8.375,
+    "Woodbury":8.875,"Oakdale":8.875,"Stillwater":8.875,"Lake Elmo":8.375,"Oak Park Heights":8.375,"Cottage Grove":8.375,
+    "Other area (Washington County)":8.375
+  },
+  // ZIP → ciudades que cubre (la primera es la más común)
+  zips:{
+    "55401":["Minneapolis"],"55402":["Minneapolis"],"55403":["Minneapolis"],"55404":["Minneapolis"],"55405":["Minneapolis"],
+    "55406":["Minneapolis"],"55407":["Minneapolis"],"55408":["Minneapolis"],"55409":["Minneapolis"],"55411":["Minneapolis"],
+    "55413":["Minneapolis"],"55414":["Minneapolis"],"55415":["Minneapolis"],"55417":["Minneapolis"],"55419":["Minneapolis","Richfield","Edina"],
+    "55454":["Minneapolis"],"55455":["Minneapolis"],
+    "55410":["Minneapolis","Edina"],"55412":["Minneapolis","Robbinsdale"],
+    "55416":["St. Louis Park","Minneapolis","Golden Valley"],
+    "55418":["Minneapolis","St. Anthony (Hennepin County)","Columbia Heights"],
+    "55420":["Bloomington","Richfield"],"55421":["Columbia Heights","Fridley","Hilltop","Minneapolis","St. Anthony (Hennepin County)"],
+    "55422":["Robbinsdale","Crystal","Golden Valley","Minneapolis"],"55423":["Richfield","Bloomington","Minneapolis"],
+    "55424":["Edina"],"55425":["Bloomington","Richfield"],"55426":["St. Louis Park","Golden Valley"],
+    "55427":["Golden Valley","New Hope","Crystal","Plymouth"],"55428":["Crystal","New Hope","Brooklyn Park","Brooklyn Center"],
+    "55429":["Brooklyn Center","Brooklyn Park","Crystal"],"55430":["Brooklyn Center","Minneapolis","Brooklyn Park"],
+    "55431":["Bloomington"],"55437":["Bloomington","Edina"],"55438":["Bloomington"],
+    "55435":["Edina","Bloomington","Richfield"],"55436":["Edina","St. Louis Park","Minneapolis"],"55439":["Edina","Bloomington","Eden Prairie"],
+    "55441":["Plymouth","Golden Valley","New Hope","Medicine Lake"],"55442":["Plymouth"],"55446":["Plymouth","Medina","Maple Grove"],"55447":["Plymouth"],
+    "55443":["Brooklyn Park","Brooklyn Center"],"55444":["Brooklyn Park","Brooklyn Center"],"55445":["Brooklyn Park"],
+    "55311":["Maple Grove","Corcoran"],"55369":["Maple Grove","Osseo","Brooklyn Park","Corcoran"],"55374":["Rogers","Corcoran","Dayton"],"55316":["Champlin","Dayton"],
+    "55305":["Minnetonka","Hopkins","Plymouth"],"55343":["Hopkins","Minnetonka","St. Louis Park","Edina"],"55345":["Minnetonka"],
+    "55391":["Wayzata","Minnetonka","Orono","Woodland","Minnetonka Beach","Deephaven","Plymouth"],
+    "55331":["Excelsior","Shorewood","Greenwood","Tonka Bay","Deephaven","Minnetrista","Chanhassen (Carver County)","Chanhassen (Hennepin County)"],
+    "55364":["Mound","Minnetrista","Orono","Spring Park"],"55356":["Long Lake","Orono"],"55340":["Medina","Corcoran"],
+    "55359":["Independence","Maple Plain"],"55375":["St. Bonifacius","Minnetrista"],
+    "55344":["Eden Prairie","Minnetonka"],"55346":["Eden Prairie"],"55347":["Eden Prairie"],
+    "55317":["Chanhassen (Carver County)","Chanhassen (Hennepin County)"],
+    "55318":["Chaska"],"55386":["Victoria"],"55387":["Waconia"],"55315":["Carver"],
+    "55379":["Shakopee"],"55372":["Prior Lake"],"55378":["Savage"],
+    "55337":["Burnsville"],"55306":["Burnsville"],"55124":["Apple Valley","Lakeville","Rosemount"],"55044":["Lakeville"],"55068":["Rosemount"],
+    "55121":["Eagan","Mendota Heights"],"55122":["Eagan"],"55123":["Eagan"],"55120":["Mendota Heights","Eagan","Mendota","Lilydale"],
+    "55118":["West St. Paul","Mendota Heights","Sunfish Lake"],"55107":["St. Paul","West St. Paul"],
+    "55075":["South St. Paul"],"55076":["Inver Grove Heights"],"55077":["Inver Grove Heights"],
+    "55101":["St. Paul"],"55102":["St. Paul"],"55103":["St. Paul"],"55104":["St. Paul"],"55105":["St. Paul"],"55106":["St. Paul"],
+    "55114":["St. Paul"],"55116":["St. Paul"],"55130":["St. Paul"],
+    "55108":["St. Paul","Falcon Heights","Lauderdale","Roseville"],"55113":["Roseville","Falcon Heights","Lauderdale","Little Canada","Arden Hills"],
+    "55117":["St. Paul","Maplewood","Little Canada","Roseville"],"55119":["St. Paul","Maplewood"],
+    "55109":["Maplewood","North St. Paul","Little Canada","Vadnais Heights"],"55112":["New Brighton","Arden Hills","Mounds View","Shoreview"],
+    "55126":["Shoreview"],"55127":["Vadnais Heights","Shoreview","North Oaks"],"55110":["White Bear Lake"],
+    "55125":["Woodbury","Maplewood"],"55129":["Woodbury"],"55128":["Oakdale","Maplewood","North St. Paul"],
+    "55082":["Stillwater","Oak Park Heights","Other area (Washington County)"],"55042":["Lake Elmo"],"55016":["Cottage Grove"],
+    "55432":["Fridley","Spring Lake Park","Mounds View"],"55433":["Coon Rapids"],"55448":["Coon Rapids"],
+    "55434":["Blaine (Anoka County)","Lexington","Circle Pines"],"55449":["Blaine (Anoka County)","Blaine (Ramsey County)"],
+    "55014":["Lino Lakes","Circle Pines","Blaine (Anoka County)"],"55303":["Anoka"],"55304":["Andover"]
+  }};
+
+/* ============ CÁLCULO ============ */
+/*CALC-START*/
+function quote(s,S){
+  const q=quoteOne(s,S);
+  const adds=Object.keys(s.addons||{}).filter(a=>s.addons[a]&&a!==s.service&&S.addonServices.includes(a));
+  if(q.type!=="price"||!adds.length) return q;
+  const list=[]; let extra=0;
+  adds.forEach(a=>{const qa=quoteOne({...s,service:a,asAddon:true},S);
+    if(qa.type==="price"){const v=r2(qa.sub-qa.travel);list.push({svc:a,items:qa.items,sum:v});extra+=v;}});
+  if(!list.length) return q;
+  const sub=r2(q.sub+extra), tax=r2(sub*q.taxRate/100), card=s.pay==="card"?r2((sub+tax)*S.cardFee/100):0, total=r2(sub+tax+card);
+  return {...q,addons:list,sub,tax,card,total,deposit:r2(total*S.deposit/100)};
+}
+function taxInfo(s,S){
+  const c=S.cities[s.city], z=(s.zip&&s.zip.length===5)?S.zips[s.zip]:null;
+  if(z){
+    const rates=[...new Set(z.map(j=>S.taxRates[j]))];
+    if(rates.length===1)return {rate:rates[0],known:true,src:"zip",jur:z[0],list:z};
+    if(z.includes(s.taxCity))return {rate:S.taxRates[s.taxCity],known:true,src:"zip",jur:s.taxCity,list:z,split:true};
+    const m=z.find(x=>x===s.city||x.startsWith(s.city+" ("))||z[0];
+    return {rate:S.taxRates[m],known:false,src:"confirm",jur:m,list:z,split:true};
+  }
+  if(c)return {rate:c[1],known:false,src:"city"};
+  return {rate:S.taxRate,known:false,src:"none"};
+}
+function quoteOne(s,S){
+  const custom=["commercial"];
+  if(custom.includes(s.service)) return {type:"custom"};
+  const c=S.cities[s.city]; const tier=c?c[0]:undefined; const travel=c?S.travel[tier]:0; const TI=taxInfo(s,S), rate=TI.rate;
+  const finish=sub=>{const tax=r2(sub*rate/100); const card=s.pay==="card"?r2((sub+tax)*S.cardFee/100):0; return {sub:r2(sub),tax,card,total:r2(sub+tax+card)};};
+  if(s.service==="assistant"){
+    const H=S.assistant, k=s.assistant, hrs=Math.max(H.minHours,k.hours), items=[["as_time",hrs*k.people*H.hourly,[hrs,k.people]]];
+    if(k.supplies)items.push(["as_supplies",H.supplies]);
+    const sum=items.reduce((a,i)=>a+i[1],0), f=finish(sum+travel);
+    return {type:"price",assistant:true,items,first:r2(sum),extras:[],pets:0,travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.service==="bins"){
+    const B=S.bins, k=s.bins, n=k.count, items=[];
+    const tbl=(arr)=>n<=arr.length?arr[n-1]:arr[arr.length-1]+(n-arr.length)*B.extraBin;
+    let base;
+    const mode=s.asAddon?"addon":k.mode;
+    if(mode==="recurring")base=B.recurring[k.freq]+Math.max(0,n-2)*B.extraBin;
+    else base=tbl(mode==="addon"?B.addon:B.once);
+    items.push(["bin_"+(mode==="recurring"?k.freq:mode),base,n]);
+    ["extreme","stuck","odor"].forEach(x=>{if(k[x])items.push(["bin_"+x,B[x]]);});
+    const sum=items.reduce((a,i)=>a+i[1],0), tr=mode==="addon"?0:travel;
+    const f=finish(sum+tr);
+    return {type:"price",bins:true,recurringBins:mode==="recurring",items,first:r2(sum),extras:[],pets:0,travel:tr,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.service==="pressure"){
+    const P=S.pressure, k=s.pressure, items=[];
+    if(P.house[k.house])items.push(["pwHouse_"+k.house,P.house[k.house]]);
+    Object.keys(P.items).forEach(x=>{if(k.items[x])items.push(["pw_"+x,P.items[x]]);});
+    if(P.patio[k.patio])items.push(["pwPatio_"+k.patio,P.patio[k.patio]]);
+    let sum=items.reduce((a,i)=>a+i[1],0);
+    if(!sum) return {type:"empty"};
+    const pct=P.dirt[k.dirt]; if(pct){const d=r2(sum*pct/100);items.push(["pwDirt",d,pct]);sum+=d;}
+    if(!s.asAddon&&sum<P.min){items.push(["pwMin",P.min-sum]);sum=P.min;}
+    const f=finish(sum+travel);
+    return {type:"price",pressure:true,items,first:r2(sum),extras:[],pets:0,travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.service==="windows"){
+    const W=S.windows, k=s.windows, r=W.rates[k.type], items=[];
+    if(k.p1)items.push(["wP1",k.p1*r[0],k.p1]);
+    if(k.p2)items.push(["wP2",k.p2*r[1],k.p2]);
+    if(k.screens)items.push(["wScreens",k.screens*W.screen,k.screens]);
+    if(k.tracks)items.push(["wTracks",k.tracks*W.track,k.tracks]);
+    if(k.sliding)items.push(["wSliding",k.sliding*W.sliding,k.sliding]);
+    let sum=items.reduce((a,i)=>a+i[1],0);
+    if(!sum) return {type:"empty"};
+    const isAdd=k.addon||s.asAddon, m=isAdd?W.addonMin:W.min;
+    if(sum<m){items.push([isAdd?"wMinAdd":"wMin",m-sum]);sum=m;}
+    const f=finish(sum+(isAdd?0:travel));
+    return {type:"price",windows:true,items,first:r2(sum),extras:[],pets:0,travel:isAdd?0:travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.service==="airbnb"){
+    const A=S.airbnb, k=s.airbnb, base=A.sizes[k.size];
+    if(!base) return {type:"custom"};
+    const items=[["aClean",base,k.size]];
+    if(k.initial)items.push(["aInitial",r2(base*A.initialPct/100)]);
+    const L=A.laundry, ld=n=>n<=0?0:(n<=3?L.loads[n-1]:L.loads[2]+(n-3)*L.extraLoad);
+    if(k.loads)items.push(["aLoads",ld(k.loads),k.loads]);
+    ["small","queen","king"].forEach(c=>{if(k[c])items.push(["a_"+c,k[c]*L[c],k[c]]);});
+    ["oven","fridge","cabinets","mess","urgent"].forEach(x=>{if(k[x])items.push(["a_"+x,A[x]]);});
+    const sum=items.reduce((a,i)=>a+i[1],0);
+    const f=finish(sum+travel);
+    return {type:"price",airbnb:true,items,first:r2(sum),extras:[],pets:0,travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.service==="carpet"){
+    const C=S.carpet, k=s.carpet, items=[];
+    const bd=n=>n<=0?0:(n<=5?C.rooms[n-1]:C.rooms[4]+(n-5)*C.extraRoom);
+    if(k.rooms)items.push(["rooms",bd(k.rooms),k.rooms]);
+    if(k.living!=="none")items.push([k.living==="large"?"livingLarge":"living",k.living==="large"?C.livingLarge:C.living]);
+    if(k.halls)items.push(["halls",k.halls*C.hall,k.halls]);
+    if(k.stairs)items.push(["stairs",C.stairs]);
+    if(k.landings)items.push(["landings",k.landings*C.landing,k.landings]);
+    if(k.closets)items.push(["closets",k.closets*C.closet,k.closets]);
+    if(k.spots)items.push(["spots",C.spot]);
+    if(k.petAreas)items.push(["petOdor",k.petAreas*C.petOdor,k.petAreas]);
+    let sum=items.reduce((a,i)=>a+i[1],0);
+    if(!sum) return {type:"empty"};
+    let best=null;
+    C.packages.forEach(pk=>{
+      if(k.rooms!==pk.rooms||(pk.hall&&k.halls<1)||(pk.living&&k.living==="none")||(pk.stairs&&!k.stairs))return;
+      const reg=bd(pk.rooms)+(pk.hall?C.hall:0)+(pk.living?C.living:0)+(pk.stairs?C.stairs:0), save=reg-pk.price;
+      if(save>0&&(!best||save>best.save))best={...pk,save};
+    });
+    if(best){items.push(["package",-best.save,best]);sum-=best.save;}
+    if(!s.asAddon&&sum<C.min){items.push(["minimum",C.min-sum]);sum=C.min;}
+    const f=finish(sum+travel);
+    return {type:"price",carpet:true,items,first:r2(sum),extras:[],pets:0,travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  }
+  if(s.sqft>S.maxSqft) return {type:"big"};
+  const col={initial:1,weekly:2,biweekly:3,monthly:4,deep:5,move:6};
+  const row=S.sqftTable.find(r=>s.sqft<=r[0])||S.sqftTable[S.sqftTable.length-1];
+  const min=k=>row[col[k]];
+  const roomsPrice=t=>{
+    const b=S.base[t]; const extraBeds=Math.max(0,s.bedrooms-1); const large=Math.min(s.large,extraBeds);
+    return (s.bedrooms===0?b.studio:b.one)+(extraBeds-large)*S.rooms.bedroom+large*S.rooms.largeBedroom
+      +Math.max(0,s.fullBaths-1)*S.rooms.fullBath+s.halfBaths*S.rooms.halfBath+s.extraRooms*S.rooms.extraRoom+S.basement[s.basement];
+  };
+  const recurring=s.service==="standard"&&s.freq!=="once";
+  let first, firstLabel, visit=null;
+  if(s.service==="standard"){
+    if(recurring){
+      first=Math.max(roomsPrice("deep"),min("initial")); firstLabel="initial";
+      visit=Math.max(roomsPrice("standard")*(1-S.discounts[s.freq]/100),min(s.freq));
+    } else {first=Math.max(roomsPrice("standard"),min("monthly")); firstLabel="standard";}
+  } else if(s.service==="deep"){first=Math.max(roomsPrice("deep"),min("deep")); firstLabel="deep";}
+  else if(s.service==="move"){first=Math.max(roomsPrice("move"),min("move")); firstLabel="move";}
+  else {first=roomsPrice("post"); firstLabel="post";}
+  const big=s.sqft>=S.largeHomeSqft?1:0;
+  const extras=[];
+  ["oven","fridge","cabinets","baseboards"].forEach(k=>{if(s.extras[k])extras.push([k,S.extras[k]]);});
+  if(s.extras.windows)extras.push(["windows",S.extras.windows[big]]);
+  if(s.extras.blinds)extras.push(["blinds",S.extras.blinds[big]]);
+  if(s.condition==="heavy")extras.push(["heavy",S.heavyDuty]);
+  const pets=S.pets[s.pets]||0;
+  const extrasSum=extras.reduce((a,e)=>a+e[1],0);
+  const f=finish(first+extrasSum+pets+travel);
+  const out={type:"price",first:r2(first),firstLabel,extras,pets,travel,cityKnown:TI.known,taxSrc:TI,taxRate:rate,...f,deposit:r2(f.total*S.deposit/100)};
+  if(visit!==null){out.visit=r2(visit);out.visitTotals=finish(visit+pets+travel);}
+  return out;
+}
+function r2(n){return Math.round(n*100)/100;}
+/*CALC-END*/
+
+/* ============ TEXTOS ============ */
+const T={
+en:{heroTitle:"Get Your Instant Quote & Book Now",heroSub:"Answer a few quick questions and see your price in seconds. No calls, no waiting.",
+ trust1:"Insured local team",trust2:"Checklist on every visit",trust3:"5-star Google reviews",
+ s1:"Choose your cleaning",s2:"Tell us about your home",s3:"How often?",s4:"Add extras",s5:"Where are we cleaning?",
+ customTitle:"Let's build your custom quote",customText:"This service is priced after a quick look at your space. Send us a text or call and we'll get you a price today.",
+ sqft:"Square footage",basement:"Basement",bedrooms:"Bedrooms",large:"Large / master bedrooms",fullBaths:"Full bathrooms",halfBaths:"Half bathrooms",
+ extraRooms:"Office / den / extra room",pets:"Pets",studioHint:"0 bedrooms = studio.",condition:"Current condition of the home",city:"City",zip:"ZIP code",pay:"How will you pay?",
+ miniLabel:"Estimated total",miniBtn:"See my quote",
+ svc:{standard:["Standard Cleaning","from $160"],deep:["Deep Cleaning","from $246"],move:["Move-In / Move-Out","from $307"],post:["Post-Construction","from $225"],
+   commercial:["Commercial & Office","custom quote"],airbnb:["Airbnb Cleaning","from $115"],carpet:["Carpet Cleaning","from $150"],windows:["Window Cleaning","from $150"],pressure:["Pressure Washing","from $150"],bins:["Trash Bin Cleaning","from $25"],assistant:["Personal Home Assistant","$70/hour · 5h min"]},
+ freq:{once:"One-time",weekly:"Weekly",biweekly:"Bi-weekly",monthly:"Monthly"},save:"Save",
+ freqHint:"Your first visit is an Initial Clean (deep clean). Every visit after that gets your recurring price.",
+ basementOpt:{none:"No basement",small:"Small basement",large:"Large basement"},
+ petsOpt:{none:"No pets",one:"1 pet",multi:"2 or more pets"},
+ condOpt:{normal:"Normal / maintained",heavy:"Needs extra work (grease, heavy dirt)"},
+ payOpt:{other:"Cash, check or Zelle",card:"Credit / debit card (+3.8%)"},
+ extra:{oven:"Inside oven",fridge:"Inside refrigerator",cabinets:"Inside kitchen cabinets",baseboards:"Baseboards",windows:"Interior windows",blinds:"Blinds"},
+ chooseCity:"Select your city",pickCity:"select your city",
+ taxCityL:"Which city is your home legally in?",taxCityShort:"Tax city",notSure:"Not sure",taxConfirm:"confirmed before your date",taxAddZip:"add your ZIP code",
+ taxCityHint:"Your ZIP code covers more than one city, and sales tax depends on the city your home is legally in (it can differ from your mailing city). Check your property tax statement, or choose \"Not sure\" and we'll confirm it.",otherCity:"My city isn't listed",
+ otherNote:"Text us your address and we'll confirm if you're in our service area (within about 35 minutes of Minneapolis).",
+ qLabel:"Your estimated price",firstVisit:"for your first visit",oneVisit:"for your cleaning",
+ lbl:{initial:"Initial Clean (first visit)",standard:"Standard Cleaning",deep:"Deep Cleaning",move:"Move-In / Move-Out Cleaning",post:"Post-Construction Cleaning",heavy:"Heavy-duty cleaning"},
+ petsLine:"Pets",travel:"Travel fee",subtotal:"Subtotal",tax:"Estimated sales tax",card:"Card processing (3.8%)",total:"Estimated total",
+ visitTitle:"Then every visit",visitNote:"includes your {p}% discount, plus tax",visitNoDisc:"plus tax",
+ deposit:"Deposit to reserve (25%)",book:"Get My Quote & Book Now",textUs:"Text us this quote",copy:"Copy my quote",copied:"Quote copied. Paste it in a text to us.",
+ orCall:"Questions? Call or text",
+ policy:"Prices are estimates and are confirmed before your date. A 25% deposit reserves your spot. Free changes with 48+ hours' notice; later cancellations keep the deposit (recurring visits: 25% of the visit).",
+ customH:"Custom quote",customSub:"We'll price it after a quick look",customBtn:"Text us for a custom quote",
+ bigH:"Large home",bigText:"Homes over 5,000 sq ft get a custom quote. Text us and we'll send it today.",
+ adTitle:"Add more services to this visit",adHint:"Everything goes in one quote, with one travel fee and one deposit.",adFirst:"Added services are done on your first visit.",
+ asTitle:"Personal Home Assistant",asIntro:"Light cleaning, home organization and household help, billed by the hour. This is not a deep cleaning or full-house cleaning.",
+ asHoursL:"Hours (minimum 5)",asPeopleL:"Assistants",asTasksL:"What do you need help with?",asSuppliesL:"Bring cleaning supplies and equipment",
+ asNote:"You are booking the assistant's time, not a set amount of work. Please share your task list and priorities before the visit. Deep cleaning, ovens, carpets, heavy furniture, childcare and personal care are not included. Cancel or reschedule with at least 24 hours' notice.",
+ asAgreeL:"I understand this is a time-based household assistance service, not a Deep Cleaning or full-house cleaning.",
+ asAgreeFirst:"Please check the service agreement above to continue.",asSub:"for your reserved time",
+ asTaskOpt:{closets:"Closet & drawer organization",kitchen:"Kitchen & pantry organization",laundry:"Laundry folding & putting away",beds:"Bed making & linen changes",tidy:"General tidying & decluttering",light:"Light cleaning of selected areas"},
+ asl:{time:"Home assistant: {h} h × {p} assistant(s) × $70",supplies:"Cleaning supplies & equipment"},
+ bTitle:"Trash bin cleaning & deodorizing",bModeL:"Type of service",bFreqL:"How often?",bCountL:"Number of bins",bDayL:"Trash collection day",
+ bNote:"Bins must be empty and accessible. Includes washing inside and out, lid, edges and handles, rinse and deodorizing. Does not include removing trash or hazardous waste. Service depends on weather.",
+ bModeOpt:{addon:"Add to my house cleaning",once:"One-time service",recurring:"Recurring plan"},
+ bFreqOpt:{monthly:"Monthly – $35/visit",quarterly:"Quarterly – $50/visit",semiannual:"Every 6 months – $65/visit"},
+ bDayOpt:{"":"Select a day",mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday",fri:"Friday",sat:"Saturday",sun:"Sunday"},
+ binOne:"bin",binMany:"bins",perVisit:"per visit · recurring plan",
+ bl:{bin_addon:"Bin cleaning, add-on",bin_once:"Bin cleaning, one-time",bin_monthly:"Bin cleaning, monthly plan",bin_quarterly:"Bin cleaning, quarterly plan",bin_semiannual:"Bin cleaning, every 6 months",
+   bin_extreme:"Extreme dirt",bin_stuck:"Hard, stuck-on residue",bin_odor:"Extra odor treatment"},
+ pwTitle:"What should we wash?",pwHouseL:"House exterior (soft wash, safe for siding)",pwPatioL:"Patio",pwDirtL:"How dirty is it?",
+ pwNote:"Starting prices. Final price is confirmed after we review the surface, size and access. Homes up to 2 stories; no roof cleaning. Siding is cleaned with low-pressure soft wash.",
+ pwHouseOpt:{none:"No house wash",one:"1-story house – from $250",two:"2-story house – from $375",front:"Front of house only – from $150"},
+ pwPatioOpt:{none:"No patio",small:"Small patio – from $125",medium:"Medium patio – from $175",large:"Large patio – from $250"},
+ pwDirtOpt:{normal:"Normal",moderate:"Moderate (+15%)",heavy:"Heavy (+30%)"},startFrom:"starting price · confirmed after review",
+ pl:{pw_driveway:"Driveway",pw_sidewalk:"Sidewalk",pw_deck:"Deck",pw_porch:"Front porch",pw_stairs:"Exterior stairs",pw_garage:"Garage floor",pw_fence:"Fence",pw_garageExt:"Detached garage exterior",
+   pwPatio_small:"Small patio",pwPatio_medium:"Medium patio",pwPatio_large:"Large patio",pwHouse_one:"House soft wash (1 story)",pwHouse_two:"House soft wash (2 stories)",pwHouse_front:"Front of house soft wash",
+   pwDirt:"Dirt level surcharge",pwMin:"Minimum per visit ($150)"},
+ wTitle:"Tell us about your windows",wTypeL:"What do you need cleaned?",wP1L:"Glass panes – 1st floor",wP2L:"Glass panes – 2nd floor",wScreensL:"Window screens ($3 each)",
+ wTracksL:"Tracks, detailed ($5 each)",wSlidingL:"Sliding glass doors ($20 each)",wAddonT:"Booking type",wAddonL:"Add to my house cleaning",
+ wHint:"How to count: a window with two separate pieces of glass = 2 panes. Both sides of the same glass count as 1 pane.",
+ wNote:"Homes up to 2 stories only. Second-floor exterior work depends on safe access. Picture windows, French doors, hard-water stains and construction residue are quoted on site.",
+ wTypeOpt:{both:"Interior + exterior",interior:"Interior only",exterior:"Exterior only"},
+ wl:{wP1:"Panes, 1st floor",wP2:"Panes, 2nd floor",wScreens:"Screens",wTracks:"Detailed tracks",wSliding:"Sliding glass doors",wMin:"Minimum window service ($150)",wMinAdd:"Minimum add-on ($75)"},
+ aTitle:"Tell us about your rental",aSize:"Bedrooms / bathrooms",aLaundryT:"Off-site laundry",aLoadsL:"Laundry loads",aSmall:"Small comforters",aQueen:"Queen comforters",aKing:"King comforters",
+ aLaundryNote:"Laundry is washed off-site and returned the next day. Please keep a second clean set of linens and towels for same-day turnovers.",aExtrasT:"Add-ons",
+ studio:"Studio",bed:"Bed",bath:"Bath",six:"6+ bedrooms (custom quote)",from:"from",perTurn:"per turnover",
+ al:{aClean:"Airbnb turnover",aInitial:"Initial deep cleaning (+40%)",aLoads:"Laundry loads",a_small:"Small comforter",a_queen:"Queen comforter",a_king:"King comforter",
+   a_oven:"Inside oven",a_fridge:"Inside refrigerator",a_cabinets:"Inside cabinets (from)",a_mess:"Excessive mess (from)",a_urgent:"Urgent booking (under 24h)",a_initial:"First-time initial deep cleaning"},
+ cTitle:"Which areas need carpet cleaning?",cRooms:"Bedrooms (up to 200 sq ft each)",cLiving:"Living room",cHalls:"Hallways (up to 100 sq ft)",cStairs:"Stairs (up to 15 steps)",
+ cLandings:"Stair landings",cClosets:"Small closets",cPet:"Pet odor removal (areas)",cSpotsL:"Spot treatment",cSpots:"Treat specific stains",
+ cNote:"Packages are applied automatically when they save you money. Heavy stains and odors are evaluated on site; complete removal can't be guaranteed.",
+ cLivingOpt:{none:"No living room",standard:"Living room (up to 250 sq ft)",large:"Large living room (251–400 sq ft)"},cStairsOpt:{no:"No stairs",yes:"Yes, stairs"},
+ cl:{rooms:"Carpet: {n} bedroom(s)",living:"Living room",livingLarge:"Large living room",halls:"Hallway",stairs:"Stairs",landings:"Stair landing",closets:"Small closet",
+   spots:"Spot treatment (from)",petOdor:"Pet odor removal (from, per area)",package:"Package savings",minimum:"Minimum per visit ($150)",bd:"bedrooms",lv:"living room",hl:"hallway",st:"stairs"},
+ emptyH:"Choose your areas",emptyText:"Add at least one area to see your price.",
+ msgIntro:"Hi Bright Touch! Here's my instant quote:",msgEnd:"I'd like to book. Please contact me."},
+es:{heroTitle:"Cotiza al instante y reserva hoy",heroSub:"Responde unas preguntas rápidas y ve tu precio en segundos. Sin llamadas, sin esperas.",
+ trust1:"Equipo local asegurado",trust2:"Checklist en cada visita",trust3:"Reseñas de 5 estrellas en Google",
+ s1:"Elige tu limpieza",s2:"Cuéntanos de tu casa",s3:"¿Cada cuánto?",s4:"Agrega extras",s5:"¿Dónde limpiamos?",
+ customTitle:"Armemos tu cotización personalizada",customText:"Este servicio se cotiza después de ver tu espacio. Escríbenos o llámanos y te damos el precio hoy.",
+ sqft:"Pies cuadrados",basement:"Sótano",bedrooms:"Habitaciones",large:"Habitaciones grandes / principal",fullBaths:"Baños completos",halfBaths:"Medios baños",
+ extraRooms:"Oficina / estudio / cuarto extra",pets:"Mascotas",studioHint:"0 habitaciones = estudio.",condition:"Estado actual de la casa",city:"Ciudad",zip:"Código postal",pay:"¿Cómo vas a pagar?",
+ miniLabel:"Total estimado",miniBtn:"Ver mi cotización",
+ svc:{standard:["Limpieza estándar","desde $160"],deep:["Limpieza profunda","desde $246"],move:["Mudanza (entrada/salida)","desde $307"],post:["Post-construcción","desde $225"],
+   commercial:["Comercial y oficinas","precio personalizado"],airbnb:["Limpieza Airbnb","desde $115"],carpet:["Limpieza de alfombras","desde $150"],windows:["Limpieza de ventanas","desde $150"],pressure:["Lavado a presión","desde $150"],bins:["Limpieza de botes de basura","desde $25"],assistant:["Asistente del hogar","$70/hora · mín. 5 h"]},
+ freq:{once:"Una vez",weekly:"Semanal",biweekly:"Cada 2 semanas",monthly:"Mensual"},save:"Ahorra",
+ freqHint:"Tu primera visita es una Limpieza inicial (profunda). Desde la siguiente, pagas tu precio recurrente.",
+ basementOpt:{none:"Sin sótano",small:"Sótano pequeño",large:"Sótano grande"},
+ petsOpt:{none:"Sin mascotas",one:"1 mascota",multi:"2 o más mascotas"},
+ condOpt:{normal:"Normal / con mantenimiento",heavy:"Necesita trabajo extra (grasa, mucha suciedad)"},
+ payOpt:{other:"Efectivo, cheque o Zelle",card:"Tarjeta de crédito / débito (+3.8%)"},
+ extra:{oven:"Dentro del horno",fridge:"Dentro del refrigerador",cabinets:"Dentro de gabinetes de cocina",baseboards:"Zócalos",windows:"Ventanas por dentro",blinds:"Persianas"},
+ chooseCity:"Elige tu ciudad",pickCity:"elige tu ciudad",
+ taxCityL:"¿En qué ciudad está legalmente tu casa?",taxCityShort:"Ciudad para impuesto",notSure:"No estoy seguro",taxConfirm:"se confirma antes de tu cita",taxAddZip:"agrega tu código postal",
+ taxCityHint:"Tu código postal cubre más de una ciudad, y el impuesto depende de la ciudad donde está legalmente tu casa (puede ser distinta a la de tu correo). Revisa tu recibo del impuesto a la propiedad, o elige \"No estoy seguro\" y te lo confirmamos.",otherCity:"Mi ciudad no está en la lista",
+ otherNote:"Escríbenos tu dirección y te confirmamos si estás en nuestra zona (a unos 35 minutos de Minneapolis).",
+ qLabel:"Tu precio estimado",firstVisit:"por tu primera visita",oneVisit:"por tu limpieza",
+ lbl:{initial:"Limpieza inicial (primera visita)",standard:"Limpieza estándar",deep:"Limpieza profunda",move:"Limpieza de mudanza",post:"Limpieza post-construcción",heavy:"Limpieza pesada"},
+ petsLine:"Mascotas",travel:"Cargo por distancia",subtotal:"Subtotal",tax:"Impuesto estimado",card:"Cargo por tarjeta (3.8%)",total:"Total estimado",
+ visitTitle:"Después, cada visita",visitNote:"incluye tu {p}% de descuento, más impuesto",visitNoDisc:"más impuesto",
+ deposit:"Depósito para reservar (25%)",book:"Reservar ahora",textUs:"Envíanos esta cotización",copy:"Copiar mi cotización",copied:"Cotización copiada. Pégala en un mensaje para nosotros.",
+ orCall:"¿Preguntas? Llama o escribe al",
+ policy:"Los precios son estimados y se confirman antes de tu cita. El 25% de depósito reserva tu fecha. Cambios gratis con 48+ horas de aviso; si cancelas después, se conserva el depósito (visitas recurrentes: 25% de la visita).",
+ customH:"Precio personalizado",customSub:"Lo cotizamos después de ver tu espacio",customBtn:"Escríbenos para cotizar",
+ bigH:"Casa grande",bigText:"Las casas de más de 5,000 pies cuadrados se cotizan aparte. Escríbenos y te mandamos el precio hoy.",
+ adTitle:"Agrega más servicios a esta visita",adHint:"Todo va en una sola cotización, con un solo cargo por distancia y un solo depósito.",adFirst:"Los servicios agregados se hacen en tu primera visita.",
+ asTitle:"Asistente personal del hogar",asIntro:"Limpieza ligera, organización y ayuda en casa, por horas. No es una limpieza profunda ni una limpieza completa de la casa.",
+ asHoursL:"Horas (mínimo 5)",asPeopleL:"Asistentes",asTasksL:"¿En qué necesitas ayuda?",asSuppliesL:"Llevar productos y equipo de limpieza",
+ asNote:"Reservas el tiempo de la asistente, no una cantidad fija de trabajo. Comparte tu lista de tareas y prioridades antes de la visita. No incluye limpieza profunda, hornos, alfombras, mover muebles pesados, cuidado de niños ni cuidado personal. Cancela o cambia con al menos 24 horas de aviso.",
+ asAgreeL:"Entiendo que es un servicio de asistencia por horas, no una limpieza profunda ni una limpieza completa de la casa.",
+ asAgreeFirst:"Marca la aceptación de condiciones de arriba para continuar.",asSub:"por tu tiempo reservado",
+ asTaskOpt:{closets:"Organizar clósets y cajones",kitchen:"Organizar cocina y despensa",laundry:"Doblar y guardar ropa",beds:"Tender camas y cambiar sábanas",tidy:"Ordenar y despejar espacios",light:"Limpieza ligera de áreas elegidas"},
+ asl:{time:"Asistente del hogar: {h} h × {p} asistente(s) × $70",supplies:"Productos y equipo de limpieza"},
+ bTitle:"Limpieza y desodorización de botes de basura",bModeL:"Tipo de servicio",bFreqL:"¿Cada cuánto?",bCountL:"Número de botes",bDayL:"Día de recolección de basura",
+ bNote:"Los botes deben estar vacíos y accesibles. Incluye lavado por dentro y por fuera, tapa, bordes y asas, enjuague y desodorización. No incluye retirar basura ni residuos peligrosos. El servicio depende del clima.",
+ bModeOpt:{addon:"Agregar a mi limpieza de casa",once:"Servicio único",recurring:"Plan recurrente"},
+ bFreqOpt:{monthly:"Mensual – $35/visita",quarterly:"Trimestral – $50/visita",semiannual:"Cada 6 meses – $65/visita"},
+ bDayOpt:{"":"Elige un día",mon:"Lunes",tue:"Martes",wed:"Miércoles",thu:"Jueves",fri:"Viernes",sat:"Sábado",sun:"Domingo"},
+ binOne:"bote",binMany:"botes",perVisit:"por visita · plan recurrente",
+ bl:{bin_addon:"Limpieza de botes, adicional",bin_once:"Limpieza de botes, servicio único",bin_monthly:"Limpieza de botes, plan mensual",bin_quarterly:"Limpieza de botes, plan trimestral",bin_semiannual:"Limpieza de botes, cada 6 meses",
+   bin_extreme:"Suciedad extrema",bin_stuck:"Residuos adheridos difíciles",bin_odor:"Tratamiento extra de olores"},
+ pwTitle:"¿Qué lavamos?",pwHouseL:"Exterior de la casa (soft wash, seguro para el revestimiento)",pwPatioL:"Patio",pwDirtL:"¿Qué tan sucio está?",
+ pwNote:"Precios iniciales. El precio final se confirma después de revisar la superficie, el tamaño y el acceso. Casas de hasta 2 plantas; no limpiamos techos. El revestimiento se lava con soft wash a baja presión.",
+ pwHouseOpt:{none:"Sin lavado de casa",one:"Casa de 1 planta – desde $250",two:"Casa de 2 plantas – desde $375",front:"Solo fachada frontal – desde $150"},
+ pwPatioOpt:{none:"Sin patio",small:"Patio pequeño – desde $125",medium:"Patio mediano – desde $175",large:"Patio grande – desde $250"},
+ pwDirtOpt:{normal:"Normal",moderate:"Moderada (+15%)",heavy:"Intensa (+30%)"},startFrom:"precio inicial · se confirma al revisar",
+ pl:{pw_driveway:"Entrada de vehículos",pw_sidewalk:"Acera",pw_deck:"Terraza / deck",pw_porch:"Porche de entrada",pw_stairs:"Escaleras exteriores",pw_garage:"Piso de garaje",pw_fence:"Cerca",pw_garageExt:"Exterior de garaje independiente",
+   pwPatio_small:"Patio pequeño",pwPatio_medium:"Patio mediano",pwPatio_large:"Patio grande",pwHouse_one:"Soft wash de casa (1 planta)",pwHouse_two:"Soft wash de casa (2 plantas)",pwHouse_front:"Soft wash fachada frontal",
+   pwDirt:"Recargo por suciedad",pwMin:"Mínimo por visita ($150)"},
+ wTitle:"Cuéntanos de tus ventanas",wTypeL:"¿Qué necesitas limpiar?",wP1L:"Paneles de vidrio – 1.ª planta",wP2L:"Paneles de vidrio – 2.ª planta",wScreensL:"Mosquiteros ($3 c/u)",
+ wTracksL:"Rieles, limpieza detallada ($5 c/u)",wSlidingL:"Puertas corredizas de vidrio ($20 c/u)",wAddonT:"Tipo de reserva",wAddonL:"Agregar a mi limpieza de casa",
+ wHint:"Cómo contar: una ventana con dos vidrios separados = 2 paneles. Las dos caras del mismo vidrio cuentan como 1 panel.",
+ wNote:"Solo casas de hasta 2 plantas. El exterior de la 2.ª planta depende de un acceso seguro. Ventanales, puertas francesas, manchas de agua dura y residuos de construcción se cotizan en sitio.",
+ wTypeOpt:{both:"Interior + exterior",interior:"Solo interior",exterior:"Solo exterior"},
+ wl:{wP1:"Paneles, 1.ª planta",wP2:"Paneles, 2.ª planta",wScreens:"Mosquiteros",wTracks:"Rieles detallados",wSliding:"Puertas corredizas",wMin:"Mínimo del servicio ($150)",wMinAdd:"Mínimo como adicional ($75)"},
+ aTitle:"Cuéntanos de tu propiedad",aSize:"Habitaciones / baños",aLaundryT:"Lavandería fuera de la propiedad",aLoadsL:"Cargas de ropa",aSmall:"Edredones pequeños",aQueen:"Edredones queen",aKing:"Edredones king",
+ aLaundryNote:"La ropa se lava fuera y se devuelve al día siguiente. Ten un segundo juego limpio de sábanas y toallas para cambios el mismo día.",aExtrasT:"Adicionales",
+ studio:"Estudio",bed:"hab",bath:"baño(s)",six:"6+ habitaciones (precio personalizado)",from:"desde",perTurn:"por cada cambio de huésped",
+ al:{aClean:"Limpieza Airbnb",aInitial:"Limpieza profunda inicial (+40%)",aLoads:"Cargas de ropa",a_small:"Edredón pequeño",a_queen:"Edredón queen",a_king:"Edredón king",
+   a_oven:"Dentro del horno",a_fridge:"Dentro del refrigerador",a_cabinets:"Dentro de gabinetes (desde)",a_mess:"Desorden excesivo (desde)",a_urgent:"Reserva urgente (menos de 24 h)",a_initial:"Limpieza profunda inicial (primera vez)"},
+ cTitle:"¿Qué áreas necesitan limpieza de alfombra?",cRooms:"Habitaciones (hasta 200 ft² c/u)",cLiving:"Sala",cHalls:"Pasillos (hasta 100 ft²)",cStairs:"Escaleras (hasta 15 peldaños)",
+ cLandings:"Descansos de escalera",cClosets:"Closets pequeños",cPet:"Eliminar olor de mascotas (áreas)",cSpotsL:"Tratamiento de manchas",cSpots:"Tratar manchas localizadas",
+ cNote:"Los paquetes se aplican solos cuando te ahorran dinero. Las manchas y olores intensos se evalúan en sitio; no se garantiza eliminarlos por completo.",
+ cLivingOpt:{none:"Sin sala",standard:"Sala (hasta 250 ft²)",large:"Sala grande (251–400 ft²)"},cStairsOpt:{no:"Sin escaleras",yes:"Sí, escaleras"},
+ cl:{rooms:"Alfombra: {n} habitación(es)",living:"Sala",livingLarge:"Sala grande",halls:"Pasillo",stairs:"Escaleras",landings:"Descanso de escalera",closets:"Closet pequeño",
+   spots:"Tratamiento de manchas (desde)",petOdor:"Olor de mascotas (desde, por área)",package:"Ahorro por paquete",minimum:"Mínimo por visita ($150)",bd:"habitaciones",lv:"sala",hl:"pasillo",st:"escaleras"},
+ emptyH:"Elige tus áreas",emptyText:"Agrega al menos un área para ver tu precio.",
+ msgIntro:"¡Hola Bright Touch! Esta es mi cotización:",msgEnd:"Quiero reservar. Por favor contáctenme."}
+};
+
+/* ============ ESTADO E INTERFAZ ============ */
+const $=id=>document.getElementById(id);
+let lang="en";
+const st={service:"standard",sqft:1500,bedrooms:3,large:0,fullBaths:2,halfBaths:0,extraRooms:0,basement:"none",pets:"none",freq:"biweekly",
+  extras:{oven:false,fridge:false,cabinets:false,baseboards:false,windows:false,blinds:false},condition:"normal",city:"",zip:"",taxCity:"",pay:"other",
+  assistant:{hours:5,people:1,supplies:false,agree:false,tasks:{}},
+  addons:{carpet:false,windows:false,bins:false,pressure:false},
+  bins:{count:2,mode:"addon",freq:"monthly",extreme:false,stuck:false,odor:false,day:""},
+  pressure:{items:{driveway:true,sidewalk:false,deck:false,porch:false,stairs:false,garage:false,fence:false,garageExt:false},patio:"none",house:"none",dirt:"normal"},
+  windows:{type:"both",p1:12,p2:8,screens:0,tracks:0,sliding:0,addon:false},
+  airbnb:{size:"2-2",loads:2,small:0,queen:0,king:0,oven:false,fridge:false,cabinets:false,initial:false,mess:false,urgent:false},
+  carpet:{rooms:3,living:"standard",halls:1,stairs:false,landings:0,closets:0,spots:false,petAreas:0}};
+const money=n=>"$"+n.toLocaleString("en-US",{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const money2=n=>"$"+n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+const NS={c:"carpet",a:"airbnb",b:"bins",h:"assistant"};
+const getK=k=>k[1]==="."?st[NS[k[0]]][k.slice(2)]:st[k];
+const setK=(k,v)=>{if(k[1]===".")st[NS[k[0]]][k.slice(2)]=v;else st[k]=v;};
+function sizeLabel(k,t){if(k==="6+")return t.six;const [b,ba]=k.split("-");return b==="0"?t.studio+" / "+ba+" "+t.bath:b+" "+t.bed+" / "+ba+" "+t.bath;}
+function opts(sel,map,val){sel.innerHTML=Object.entries(map).map(([k,v])=>`<option value="${k}"${k===val?" selected":""}>${v}</option>`).join("");}
+function build(){
+  const t=T[lang];
+  document.querySelectorAll("[data-t]").forEach(el=>{const v=t[el.dataset.t];if(typeof v==="string")el.textContent=v;});
+  $("services").innerHTML=Object.keys(t.svc).map(k=>`<label class="opt"><input type="radio" name="service" value="${k}"${st.service===k?" checked":""}><span><b>${t.svc[k][0]}</b><small>${t.svc[k][1]}</small></span></label>`).join("");
+  $("freq").innerHTML=Object.keys(t.freq).map(k=>{const d=SETTINGS.discounts[k];return `<label class="opt"><input type="radio" name="freq" value="${k}"${st.freq===k?" checked":""}><span><b>${t.freq[k]}</b>${d?`<em class="tag">${t.save} ${d}%</em>`:""}</span></label>`;}).join("");
+  $("freqHint").textContent=t.freqHint;
+  opts($("basement"),t.basementOpt,st.basement); opts($("pets"),t.petsOpt,st.pets); opts($("condition"),t.condOpt,st.condition); opts($("pay"),t.payOpt,st.pay);
+  opts($("cLiving"),t.cLivingOpt,st.carpet.living); opts($("cStairs"),t.cStairsOpt,st.carpet.stairs?"yes":"no"); $("cSpots").checked=st.carpet.spots;
+  $("asTasks").innerHTML=Object.keys(t.asTaskOpt).map(k=>`<label class="check"><input type="checkbox" data-task="${k}"${st.assistant.tasks[k]?" checked":""}><span>${t.asTaskOpt[k]}</span></label>`).join("");
+  $("asSupplies").checked=st.assistant.supplies; $("asAgree").checked=st.assistant.agree;
+  opts($("bMode"),t.bModeOpt,st.bins.mode); opts($("bFreq"),t.bFreqOpt,st.bins.freq); opts($("bDay"),t.bDayOpt,st.bins.day);
+  $("addonChecks").innerHTML=SETTINGS.addonServices.map(k=>`<label class="check" data-addon-row="${k}"><input type="checkbox" data-addon="${k}"${st.addons[k]?" checked":""}><span>${t.svc[k][0]}</span><em>${t.svc[k][1]}</em></label>`).join("");
+  $("bChecks").innerHTML=["extreme","stuck","odor"].map(k=>`<label class="check"><input type="checkbox" data-bin="${k}"${st.bins[k]?" checked":""}><span>${t.bl["bin_"+k]}</span><em>+${money(SETTINGS.bins[k])}</em></label>`).join("");
+  opts($("pwHouse"),t.pwHouseOpt,st.pressure.house); opts($("pwPatio"),t.pwPatioOpt,st.pressure.patio); opts($("pwDirt"),t.pwDirtOpt,st.pressure.dirt);
+  $("pwChecks").innerHTML=Object.keys(SETTINGS.pressure.items).map(k=>`<label class="check"><input type="checkbox" data-pw="${k}"${st.pressure.items[k]?" checked":""}><span>${t.pl["pw_"+k]}</span><em>${t.from} ${money(SETTINGS.pressure.items[k])}</em></label>`).join("");
+  opts($("wType"),t.wTypeOpt,st.windows.type); $("wAddon").checked=st.windows.addon;
+  ["p1","p2","screens","tracks","sliding"].forEach(k=>{const el=document.querySelector(`[data-win="${k}"]`);if(document.activeElement!==el)el.value=st.windows[k];});
+  const sizeMap={};Object.keys(SETTINGS.airbnb.sizes).forEach(k=>sizeMap[k]=sizeLabel(k,t));opts($("aSize"),sizeMap,st.airbnb.size);
+  const A=SETTINGS.airbnb;
+  $("aChecks").innerHTML=[["initial","+"+A.initialPct+"%"],["oven","+"+money(A.oven)],["fridge","+"+money(A.fridge)],["cabinets",t.from+" "+money(A.cabinets)],["mess",t.from+" "+money(A.mess)],["urgent","+"+money(A.urgent)]]
+    .map(([k,p])=>`<label class="check"><input type="checkbox" data-airbnb="${k}"${st.airbnb[k]?" checked":""}><span>${t.al["a_"+k]||t.al.aInitial}</span><em>${p}</em></label>`).join("");
+  const cityMap={"":t.chooseCity};Object.keys(SETTINGS.cities).sort().forEach(c=>cityMap[c]=c);cityMap.__other=t.otherCity;opts($("city"),cityMap,st.city);
+  $("extras").innerHTML=Object.keys(t.extra).map(k=>{const v=SETTINGS.extras[k];const p=Array.isArray(v)?v[st.sqft>=SETTINGS.largeHomeSqft?1:0]:v;
+    return `<label class="check"><input type="checkbox" data-extra="${k}"${st.extras[k]?" checked":""}><span>${t.extra[k]}</span><em>+${money(p)}</em></label>`;}).join("");
+  document.querySelectorAll(".stepper").forEach(el=>{el.innerHTML=`<button type="button" data-d="-1" aria-label="−">−</button><output>${getK(el.dataset.key)}</output><button type="button" data-d="1" aria-label="+">+</button>`;});
+  $("btnEn").setAttribute("aria-pressed",lang==="en");$("btnEs").setAttribute("aria-pressed",lang==="es");
+  document.documentElement.lang=lang;
+  update();
+}
+function update(){
+  const t=T[lang], q=quote(st,SETTINGS), custom=q.type==="custom";
+  const P=st.service, RES=["standard","deep","move","post"].includes(P);
+  const adds=SETTINGS.addonServices.filter(k=>st.addons[k]&&k!==P);
+  $("customBox").hidden=!custom;
+  ["homeStep","extrasStep"].forEach(id=>$(id).hidden=!RES);
+  $("freqStep").hidden=P!=="standard";
+  const panelOf={carpet:"carpetStep",windows:"windowsStep",bins:"binsStep",pressure:"pressureStep",airbnb:"airbnbStep",assistant:"assistStep"};
+  Object.entries(panelOf).forEach(([svc,id])=>{const el=$(id),isAdd=adds.includes(svc),target=isAdd?$("addonPanels"):$("primaryPanels");
+    el.hidden=!(P===svc||isAdd); if(el.parentNode!==target)target.appendChild(el);});
+  $("bMode").closest(".field").hidden=P!=="bins";
+  $("bFreqWrap").hidden=P!=="bins"||st.bins.mode!=="recurring";
+  $("wAddon").closest(".field").hidden=P!=="windows";
+  $("addonsStep").hidden=custom||q.type==="big";
+  document.querySelectorAll("[data-addon-row]").forEach(r=>r.hidden=r.dataset.addonRow===P);
+  $("locStep").hidden=false;
+  const note=$("cityNote");note.hidden=st.city!=="__other";note.textContent=t.otherNote;
+  const TI=taxInfo(st,SETTINGS), tw=$("taxCityWrap");tw.hidden=!TI.split;
+  if(TI.split){const m={"":t.notSure+" ("+TI.list.find(x=>x===TI.jur)+")"};TI.list.forEach(j=>m[j]=j+" – "+SETTINGS.taxRates[j]+"%");
+    opts($("taxCity"),m,TI.list.includes(st.taxCity)?st.taxCity:"");}
+  let html="";
+  if(q.type!=="price"){
+    const h=custom?t.customH:q.type==="empty"?t.emptyH:t.bigH, sub=custom?t.customSub:q.type==="empty"?t.emptyText:t.bigText;
+    html=`<div class="q-head"><small>${t.qLabel}</small><div class="q-total" style="font-size:30px">${h}</div><div class="q-sub">${sub}</div></div>
+      <div class="q-body"><div class="cta"><a class="btn primary" id="smsBtn">${t.customBtn}</a></div>${contactHTML(t)}<p class="policy">${t.policy}</p></div>`;
+    $("miniTotal").textContent=h;
+  } else {
+    const L=[];
+    if(q.items){q.items.forEach(it=>L.push([itemLabel(it,t),it[1],it[0]==="package"]));}
+    else L.push([t.lbl[q.firstLabel],q.first]);
+    q.extras.forEach(([k,v])=>L.push([k==="heavy"?t.lbl.heavy:t.extra[k],v]));
+    if(q.pets)L.push([t.petsLine,q.pets]);
+    if(q.addons){L.unshift([t.svc[P][0],null]);q.addons.forEach(ad=>{L.push([t.svc[ad.svc][0],null]);ad.items.forEach(it=>L.push([itemLabel(it,t),it[1],it[0]==="package"]));});}
+    if(q.travel)L.push([t.travel,q.travel]);
+    const d=SETTINGS.discounts[st.freq];
+    html=`<div class="q-head"><small>${t.qLabel}</small><div class="q-total">${money2(q.total)}</div><div class="q-sub">${q.assistant?t.asSub:q.recurringBins?t.perVisit:q.pressure?t.startFrom:q.airbnb?t.perTurn:q.visit!=null?t.firstVisit:t.oneVisit}</div></div>
+      <div class="q-body">
+        <div class="lines">${L.map(([a,b,m])=>b===null?`<div class="line head"><span>${a}</span></div>`:`<div class="line${m?" minus":""}"><span>${a}</span><span>${b<0?"−"+money2(-b):money2(b)}</span></div>`).join("")}
+          <div class="line strong"><span>${t.subtotal}</span><span>${money2(q.sub)}</span></div>
+          <div class="line muted"><span>${t.tax} (${q.taxRate}%${taxNote(q,t)})</span><span>${money2(q.tax)}</span></div>
+          ${q.card?`<div class="line muted"><span>${t.card}</span><span>${money2(q.card)}</span></div>`:""}
+          <div class="line strong"><span>${t.total}</span><span>${money2(q.total)}</span></div></div>
+        ${q.addons&&q.visit!=null?`<p class="hint">${t.adFirst}</p>`:""}${q.visit!=null?`<div class="recur"><b>${t.visitTitle}: ${money2(q.visit+q.pets+q.travel)}</b><span>${d?t.visitNote.replace("{p}",d):t.visitNoDisc}</span></div>`:""}
+        <div class="deposit"><span>${t.deposit}</span><span>${money2(q.deposit)}</span></div>
+        ${q.assistant&&!st.assistant.agree?`<p class="note">${t.asAgreeFirst}</p>`:`<div class="cta">${SETTINGS.bookingUrl?`<a class="btn primary" href="${SETTINGS.bookingUrl}" target="_blank" rel="noopener">${t.book}</a>`:""}
+          <a class="btn ${SETTINGS.bookingUrl?"ghost":"primary"}" id="smsBtn">${t.textUs}</a>
+          <button type="button" class="btn ghost" id="copyBtn">${t.copy}</button><p class="copied" id="copied" role="status"></p></div>`}
+        ${contactHTML(t)}
+        <p class="policy">${t.policy}</p>
+      </div>`;
+    $("miniTotal").textContent=money2(q.total);
+  }
+  $("quote").innerHTML=html;
+  const sms=$("smsBtn");if(sms)sms.href="sms:"+SETTINGS.phone.replace(/\D/g,"")+"?&body="+encodeURIComponent(summary(q));
+}
+function taxNote(q,t){const T=q.taxSrc||{};
+  if(T.src==="zip")return " · "+(T.split?T.jur.replace(/ \(.*\)$/,""):"ZIP "+st.zip);
+  if(T.src==="confirm")return " · "+t.taxConfirm;
+  if(st.zip.length===5&&!SETTINGS.zips[st.zip])return " · "+t.taxConfirm;
+  return " · "+t.taxAddZip;}
+function itemLabel(it,t){const [k,v,n]=it;
+  if(k==="as_time")return t.asl.time.replace("{h}",n[0]).replace("{p}",n[1]);
+  if(k==="as_supplies")return t.asl.supplies;
+  if(k.startsWith("bin_"))return t.bl[k]+(n?" ("+n+" "+(n===1?t.binOne:t.binMany)+")":"");
+  if(k.startsWith("pw"))return t.pl[k]+(k==="pwDirt"?" (+"+n+"%)":"");
+  if(k[0]==="w"&&t.wl[k])return t.wl[k]+(n?" ×"+n:"");
+  if(k==="aClean")return t.al.aClean+" ("+sizeLabel(n,t)+")";
+  if(k.startsWith("a")&&t.al[k])return t.al[k]+(n&&k!=="aClean"?" ×"+n:"");
+  if(k==="rooms")return t.cl.rooms.replace("{n}",n);
+  if(k==="package"){const p=n;return t.cl.package+": "+[p.rooms+" "+t.cl.bd,p.living?t.cl.lv:"",p.hall?t.cl.hl:"",p.stairs?t.cl.st:""].filter(Boolean).join(" + ");}
+  if(n)return t.cl[k]+" ×"+n;
+  return t.cl[k];}
+function contactHTML(t){return `<div class="contact"><span>${t.orCall}</span><b>${SETTINGS.phone}</b><b>${SETTINGS.email}</b></div>`;}
+function summary(q){
+  const t=T[lang];const lines=[t.msgIntro];
+  lines.push("- "+t.svc[st.service][0]);
+  if(q.type==="price"&&q.items){
+    q.items.forEach(it=>lines.push("- "+itemLabel(it,t)));
+  } else if(q.type==="price"){
+    lines.push(`- ${st.sqft} sq ft · ${st.bedrooms} bd · ${st.fullBaths}${st.halfBaths?"."+st.halfBaths:""} ba`);
+    if(st.service==="standard")lines.push("- "+t.freq[st.freq]);
+    q.extras.forEach(([k])=>lines.push("- "+(k==="heavy"?t.lbl.heavy:t.extra[k])));
+    if(st.pets!=="none")lines.push("- "+t.petsOpt[st.pets]);
+    if(q.visit!=null)lines.push(`- ${t.visitTitle}: ${money2(q.visit+q.pets+q.travel)} + tax`);
+  }
+  if(q.addons)q.addons.forEach(ad=>{lines.push("+ "+t.svc[ad.svc][0]+": "+money2(ad.sum));ad.items.forEach(it=>lines.push("   - "+itemLabel(it,t)));});
+  if(q.type==="price")lines.push(`- ${t.total}: ${money2(q.total)}`);
+  if(st.service==="assistant"){const tk=Object.keys(st.assistant.tasks).filter(k=>st.assistant.tasks[k]).map(k=>t.asTaskOpt[k]);if(tk.length)lines.push("- "+tk.join(", "));}
+  if((st.service==="bins"||(q.addons||[]).some(a=>a.svc==="bins"))&&st.bins.day)lines.push("- "+t.bDayL+": "+t.bDayOpt[st.bins.day]);
+  if(st.city)lines.push("- "+(st.city==="__other"?t.otherCity:st.city)+(st.zip?" "+st.zip:""));
+  if(q.type==="price"&&q.taxSrc&&q.taxSrc.split)lines.push("- "+t.taxCityShort+": "+q.taxSrc.jur+" ("+q.taxRate+"%"+(q.taxSrc.known?"":", "+t.taxConfirm)+")");
+  lines.push(t.msgEnd);return lines.join("\n");
+}
+
+/* Eventos */
+$("form").addEventListener("change",e=>{
+  const el=e.target;
+  if(el.name==="service"){st.service=el.value;}
+  else if(el.name==="freq"){st.freq=el.value;}
+  else if(el.dataset.extra){st.extras[el.dataset.extra]=el.checked;}
+  else if(["basement","pets","condition","city","pay","taxCity"].includes(el.id)){st[el.id]=el.value;}
+  else if(el.id==="cLiving"){st.carpet.living=el.value;}
+  else if(el.id==="cStairs"){st.carpet.stairs=el.value==="yes";}
+  else if(el.id==="cSpots"){st.carpet.spots=el.checked;}
+  else if(el.id==="aSize"){st.airbnb.size=el.value;}
+  else if(el.id==="wType"){st.windows.type=el.value;}
+  else if(el.id==="bMode"){st.bins.mode=el.value;}
+  else if(el.id==="asSupplies"){st.assistant.supplies=el.checked;}
+  else if(el.id==="asAgree"){st.assistant.agree=el.checked;}
+  else if(el.dataset.task){st.assistant.tasks[el.dataset.task]=el.checked;}
+  else if(el.id==="bFreq"){st.bins.freq=el.value;}
+  else if(el.id==="bDay"){st.bins.day=el.value;}
+  else if(el.dataset.bin){st.bins[el.dataset.bin]=el.checked;}
+  else if(el.dataset.addon){st.addons[el.dataset.addon]=el.checked;}
+  else if(["pwHouse","pwPatio","pwDirt"].includes(el.id)){st.pressure[el.id.slice(2).toLowerCase()]=el.value;}
+  else if(el.dataset.pw){st.pressure.items[el.dataset.pw]=el.checked;}
+  else if(el.id==="wAddon"){st.windows.addon=el.checked;}
+  else if(el.dataset.airbnb){st.airbnb[el.dataset.airbnb]=el.checked;}
+  update();
+});
+$("sqft").addEventListener("input",e=>{const v=parseInt(e.target.value,10);st.sqft=isNaN(v)?0:v;build();});
+$("form").addEventListener("input",e=>{const k=e.target.dataset.win;if(!k)return;const v=parseInt(e.target.value,10);st.windows[k]=isNaN(v)||v<0?0:v;update();});
+$("zip").addEventListener("input",e=>{e.target.value=e.target.value.replace(/\D/g,"").slice(0,5);st.zip=e.target.value;update();});
+$("form").addEventListener("click",e=>{
+  const b=e.target.closest(".stepper button");if(!b)return;
+  const s=b.parentElement,k=s.dataset.key,v=Math.min(+s.dataset.max,Math.max(+s.dataset.min,getK(k)+(+b.dataset.d)));
+  setK(k,v);s.querySelector("output").textContent=v;update();
+});
+document.addEventListener("click",e=>{
+  if(e.target.id!=="copyBtn")return;
+  const txt=summary(quote(st,SETTINGS));const done=()=>{const c=$("copied");if(c)c.textContent=T[lang].copied;};
+  try{navigator.clipboard.writeText(txt).then(done,done);}catch(err){done();}
+});
+$("btnEn").onclick=()=>{lang="en";build();};
+$("btnEs").onclick=()=>{lang="es";build();};
+$("topPhone").textContent=SETTINGS.phone;
+build();
+</script>
+
+</body></html>
